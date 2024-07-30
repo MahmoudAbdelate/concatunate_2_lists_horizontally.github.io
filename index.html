@@ -4,25 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>concat 2 lists horizontally</title>
-    <script>
-      // "i" stands for "input"
-      const i1 = document.getElementById('1');
-      const i2 = document.getElementById('2');
-      const p = document.getElementById('p');
-
-      function concat() {
-        const v1 = i1.value.split('\n');
-        const v2 = i2.value.split('\n');
-        const result = '';
-
-        v1.forEach((item, index) => {
-          result += `${v1},,${v2}\n`;
-        });
-
-        p.innerText = result;
-        result = '';
-      }
-    </script>
   </head>
   <body>
     <textarea type="text" id="1"></textarea>
@@ -32,5 +13,30 @@
     <button onclick="concat()">Concat</button>
     <br />
     <p id="p"></p>
+    <br />
+    <button onclick="copy()">Concat</button>
   </body>
+  <script>
+    // "i" stands for "input"
+    const i1 = document.getElementById('1');
+    const i2 = document.getElementById('2');
+    const p = document.getElementById('p');
+
+    function concat() {
+      const v1 = i1.value.split('\n');
+      const v2 = i2.value.split('\n');
+      let result = '';
+
+      v1.forEach((item, index) => {
+        result += `${item},,${v2[index]}\n`;
+      });
+
+      p.innerText = result;
+      result = '';
+    }
+
+    function copy() {
+      navigator.clipboard.writeText(p.innerText);
+    }
+  </script>
 </html>
