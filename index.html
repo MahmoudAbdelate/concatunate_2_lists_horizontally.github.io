@@ -58,7 +58,7 @@
     const listsSeparator = '\n\n\n';
 
     // 1. saving the second list
-    const copiedText = await navigator.clipboard.readText();
+    const copiedText = navigator.clipboard.readText();
     copiedText = copiedText.split(listsSeparator);
 
     if (copiedText == []) messageBox.innerText = 'Empty clipboard';
