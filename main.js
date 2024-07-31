@@ -31,6 +31,8 @@ const listsSeparator = '\n\n\n';
 const copiedText = await navigator.clipboard.readText();
 copiedText = copiedText.split(listsSeparator);
 
+if (copiedText == []) messageBox.innerText = 'Empty clipboard';
+
 // 2. concatenate
 const result = concatenate(copiedText[0], copiedText[1]);
 
