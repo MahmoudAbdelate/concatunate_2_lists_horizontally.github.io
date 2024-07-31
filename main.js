@@ -1,13 +1,13 @@
 const errorBox = document.getElementById('errorBox');
 
-const lineSeparate = '\n\n'; // between input lists' items
-const itemSeparate = ','; // between the two items that concatenated horizontally in one line
+const lineSeparator = '\n\n'; // between input lists' items
+const itemSeparator = ','; // between the two items that concatenated horizontally in one line
 
 // making two lists concatenate horizontally
 function concatenate(v1, v2) {
   // split lists' items
-  v1 = v1.split(lineSeparate);
-  v2 = v2.split(lineSeparate);
+  v1 = v1.split(lineSeparator);
+  v2 = v2.split(lineSeparator);
 
   // checking length equality
   if (v1.length != v2.length) {
@@ -19,23 +19,20 @@ function concatenate(v1, v2) {
   let result = '';
 
   v1.forEach((item, index) => {
-    result += `${item}${itemSeparate}${v2[index]}\n`;
+    result += `${item}${itemSeparator}${v2[index]}\n`;
   });
 
   return result;
 }
 
-// saving the first list once the page open
-const v1 = navigator.clipboard.readText();
+const listsSeparator = '\n\n\n';
 
-// Second Step
-function finish() {
-  // 1. saving the second list
-  const v2 = navigator.clipboard.readText();
+// 1. saving the second list
+const copiedText = await navigator.clipboard.readText();
+copiedText = copiedText.split(listsSeparator);
 
-  // 2. concatenate
-  const result = concatenate(v1, v2);
+// 2. concatenate
+const result = concatenate(copiedText[0], copiedText[1]);
 
-  // 3. save result to clipboard
-  navigator.clipboard.writeText(result);
-}
+// 3. save result to clipboard
+navigator.clipboard.writeText(result);
