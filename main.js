@@ -1,4 +1,4 @@
-const errorBox = document.getElementById('errorBox');
+const messageBox = document.getElementById('messageBox');
 
 const lineSeparator = '\n\n'; // between input lists' items
 const itemSeparator = ','; // between the two items that concatenated horizontally in one line
@@ -11,7 +11,7 @@ function concatenate(v1, v2) {
 
   // checking length equality
   if (v1.length != v2.length) {
-    errorBox.innerText = "Lists' length isn't equal";
+    messageBox.innerText = "Lists' length isn't equal";
     return;
   }
 
@@ -36,3 +36,5 @@ const result = concatenate(copiedText[0], copiedText[1]);
 
 // 3. save result to clipboard
 navigator.clipboard.writeText(result);
+
+messageBox.innerText = result;

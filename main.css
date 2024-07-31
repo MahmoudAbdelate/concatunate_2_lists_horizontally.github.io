@@ -2,28 +2,15 @@
   box-sizing: border-box;
 }
 
-body,
-.container {
+body {
   display: grid;
   place-items: center;
-}
-
-body {
   margin: 0;
   height: 100vh;
   background-color: #141414;
 }
 
-.container h2 {
+h2 {
   color: white;
   font-size: 23px;
-}
-
-.container button {
-  outline: none;
-  outline: none;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 25px;
 }
