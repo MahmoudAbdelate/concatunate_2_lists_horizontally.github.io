@@ -59,7 +59,16 @@
 
     // 1. saving the second list
     navigator.clipboard.readText().then((copiedText) => {
+      // checking if it's undefined
+      if (copiedText === undefined) {
+        messageBox.innerText = 'copy text first';
+        return;
+      }
+
+      // split copiedText to 2 lists
       copiedText = copiedText.split(listsSeparator);
+
+      // validating the length of lists
       if (copiedText.length === 2) {
         // 2. concatenate
         const result = concatenate(copiedText[0], copiedText[1]);
