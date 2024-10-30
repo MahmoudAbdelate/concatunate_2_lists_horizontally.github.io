@@ -45,6 +45,7 @@
 
     // 1. saving the second list
     navigator.clipboard.readText().then((copiedText) => {
+      messageBox.innerText = 'entered "navigator.clipboard.readText().then()"';
       // checking if it's undefined
       if (copiedText === undefined) {
         messageBox.innerText = 'copy text first';
