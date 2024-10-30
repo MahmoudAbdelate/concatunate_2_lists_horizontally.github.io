@@ -41,6 +41,8 @@
     const listsSeparator = '\n\n\n'; // between input lists
     const lineSeparator = '\n\n'; // between input lists' items
 
+    messageBox.innerText = 'entered <script>';
+
     // 1. saving the second list
     navigator.clipboard.readText().then((copiedText) => {
       // checking if it's undefined
