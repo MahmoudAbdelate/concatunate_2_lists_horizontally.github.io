@@ -1,0 +1,19 @@
+Text structure:
+  Lists separator: 2 lines
+  Items separator: 1 line
+
+The way:
+  1. read the text from clipboard
+  [error point] if there isn't a text, print "there isn't any copied text"
+
+  2. separate Lists
+  [error point] if len(lists) != 2, print "lists aren't separated correctly"
+
+  3. separate items
+  [error point] if len(items) lists isn't equal, print "list {n} has {len(items) of list {n}}" for each list, to tell the user where is the reduction.
+
+  4. add items one to one from this 2 lists and separate them with ","
+      separate each 2 items with a line
+
+  5. save final result to the clipboard then
+      print "Done\nSaved to clipboard"

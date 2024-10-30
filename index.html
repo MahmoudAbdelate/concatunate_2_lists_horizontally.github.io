@@ -22,37 +22,24 @@
   </head>
   <body>
     <!-- showing messages -->
-    <h2 id="messageBox">Hi</h2>
+    <p id="messageBox">Welcome</p>
   </body>
   <script type="module" defer>
     const messageBox = document.getElementById('messageBox');
 
-    const lineSeparator = '\n\n'; // between input lists' items
-    const itemSeparator = ','; // between the two items that concatenated horizontally in one line
-
     // making two lists concatenate horizontally
-    function concatenate(v1, v2) {
-      // split lists' items
-      v1 = v1.split(lineSeparator);
-      v2 = v2.split(lineSeparator);
-
-      // checking length equality
-      if (v1.length != v2.length) {
-        messageBox.innerText = "Lists' length isn't equal";
-        return;
-      }
-
-      // concatenate
+    function concatenate(list1, list2) {
       let result = '';
 
-      v1.forEach((item, index) => {
-        result += `${item}${itemSeparator}${v2[index]}\n`;
+      list1.forEach((item, index) => {
+        result += `${item},${list2[index]}\n`;
       });
 
       return result;
     }
 
-    const listsSeparator = '\n\n\n';
+    const listsSeparator = '\n\n\n'; // between input lists
+    const lineSeparator = '\n\n'; // between input lists' items
 
     // 1. saving the second list
     navigator.clipboard.readText().then((copiedText) => {
@@ -63,21 +50,32 @@
       }
 
       // split copiedText to 2 lists
-      copiedText = copiedText.split(listsSeparator);
+      lists = copiedText.split(listsSeparator);
 
       // validating the length of lists
-      if (copiedText.length === 2) {
-        // 2. concatenate
-        const result = concatenate(copiedText[0], copiedText[1]);
-
-        // 3. save result to clipboard
-        navigator.clipboard.writeText(result);
-
-        // 4. showing the result on the screen with 'Done' message
-        messageBox.innerText = `Done\n\n${result}`;
-      } else {
-        messageBox.innerText = `You forgot to separate the lists\n\ncopied text: "${copiedText}"`;
+      if (lists.length !== 2) {
+        messageBox.innerText = "lists aren't separated correctly";
+        return;
       }
+
+      // split lists' items
+      list1 = lists[0].split(lineSeparator);
+      list2 = lists[1].split(lineSeparator);
+
+      // checking lists' items number equality
+      if (list1.length !== list2.length) {
+        messageBox.innerText = `lists' items number aren't equal\n1st list has ${list1.length} item\n2nd list has ${list2.length} item`;
+        return;
+      }
+
+      // concatenate
+      const result = concatenate(copiedText[0], copiedText[1]);
+
+      // save result to clipboard
+      navigator.clipboard.writeText(result);
+
+      // showing the result on the screen with 'Done' message
+      messageBox.innerText = 'Done\nSaved to clipboard';
     });
   </script>
 </html>
