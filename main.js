@@ -27,7 +27,7 @@ navigator.clipboard.readText().then((copiedText) => {
 
   // validating the length of lists
   if (lists.length !== 2) {
-    messageBox.innerText = "lists aren't separated correctly";
+    messageBox.innerText = `lists aren't separated correctly\n\n${lists}`;
     return;
   }
 
